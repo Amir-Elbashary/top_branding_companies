@@ -13,10 +13,12 @@ page.css('.provider-row').map do |element|
 
   reviews = Nokogiri::HTML(open(element.css('a').first.attributes['href'].text))
   reviews_text = []
+
   reviews.css('.views-row').map do |review| 
     reviews_text << review.css('p')[0].text
     company_info['reviews'] = reviews_text
   end
+
   companies[company_name] = company_info
 end
 
